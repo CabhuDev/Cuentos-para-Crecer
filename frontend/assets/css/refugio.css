@@ -1,0 +1,257 @@
+/* ========================================
+   Refugio Page - Estilos Específicos
+   ======================================== */
+
+.refugio-header {
+  background: linear-gradient(135deg, var(--refugio-primary), var(--refugio-secondary));
+  color: var(--color-blanco);
+  padding: var(--spacing-lg) 0;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.refugio-header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.user-welcome {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.refugio-main {
+  padding: var(--spacing-xl) 0;
+  min-height: calc(100vh - 200px);
+}
+
+/* Secciones de Recursos */
+.recursos-section {
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background-color: var(--color-blanco);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.recursos-section h2 {
+  font-size: 2rem;
+  color: var(--refugio-primary);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.section-description {
+  text-align: center;
+  color: var(--color-texto-light);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.1rem;
+}
+
+/* Grid de Audios */
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.audio-card {
+  background-color: var(--color-fondo);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.audio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.audio-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.audio-card h3 {
+  font-size: 1.3rem;
+  color: var(--color-texto);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.audio-card audio {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+/* Grid de Descargas */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.download-card {
+  background-color: var(--color-fondo);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.download-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.download-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.download-card h3 {
+  font-size: 1.3rem;
+  color: var(--color-texto);
+  margin-bottom: var(--spacing-sm);
+}
+
+.download-card p {
+  color: var(--color-texto-light);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Grid de Fichas para Colorear */
+.coloring-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.coloring-card {
+  background-color: var(--color-fondo);
+  padding: var(--spacing-md);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.coloring-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.coloring-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-sm);
+  border: 2px solid #E5E7EB;
+}
+
+.coloring-card h3 {
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Diploma Creator */
+.diploma-section {
+  background: linear-gradient(135deg, rgba(247, 155, 114, 0.05), rgba(59, 140, 136, 0.05));
+}
+
+.diploma-creator {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.diploma-input {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.diploma-input label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-texto);
+}
+
+.diploma-input input {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+  border: 2px solid var(--refugio-primary);
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  font-family: var(--font-main);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.diploma-input input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(247, 155, 114, 0.2);
+}
+
+.diploma-preview {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+#canvas-diploma {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--refugio-primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-blanco);
+}
+
+/* Footer */
+.refugio-footer {
+  background-color: var(--refugio-secondary);
+  color: var(--color-blanco);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+}
+
+.refugio-footer p {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .refugio-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .user-welcome {
+    font-size: 1rem;
+  }
+  
+  .recursos-section {
+    padding: var(--spacing-lg);
+  }
+  
+  .recursos-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .audio-grid,
+  .download-grid,
+  .coloring-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  #canvas-diploma {
+    width: 100%;
+  }
+}

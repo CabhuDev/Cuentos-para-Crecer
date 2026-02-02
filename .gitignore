@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Base de datos
+backend/data/*.db
+backend/data/*.db-journal
+
+# Variables de entorno
+.env
+backend/.env
+*.env
+!.env.example
+
+# Archivos multimedia estáticos
+frontend/assets/audio/*.mp3
+frontend/assets/pdf/*.pdf
+frontend/assets/img/*.png
+frontend/assets/img/*.jpg
+frontend/assets/img/*.jpeg
+frontend/assets/img/*.gif
+frontend/assets/img/laminas/*.jpg
+
+# Documentación (ignorar todos menos README.md)
+*.md
+!README.md
+
+# Docker
+.dockerignore
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales
+*.tmp
+*.bak
+*.cache
+
+# Node modules (por si añades npm en el futuro)
+node_modules/
+package-lock.json
+Thumbs.db
+*.swp
+*.swo
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-*
+
+# Archivos temporales
+*.tmp
+*.bak

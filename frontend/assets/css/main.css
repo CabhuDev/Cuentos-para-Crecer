@@ -1,0 +1,242 @@
+/* ========================================
+   Variables CSS Globales - Cuentos para Crecer
+   ======================================== */
+:root {
+  /* Paleta Base - Cálida y Amigable */
+  --color-primary: #F79B72;        /* Naranja cálido - Amistad */
+  --color-secondary: #2A4759;      /* Azul oscuro - Confianza */
+  --color-tertiary: #3B8C88;       /* Verde azulado - Crecimiento */
+  --color-light-gray: #DDDDDD;     /* Gris claro */
+  --color-bg-light: #EEEEEE;       /* Gris muy claro */
+  
+  /* Colores de Personajes */
+  --color-luli: #FFD700;           /* Amarillo Excavadora */
+  --color-tilo: #3B8C88;           /* Verde Tractor */
+  --color-martin: #F79B72;         /* Naranja Pelota */
+  
+  /* Colores Principales */
+  --refugio-primary: var(--color-primary);
+  --refugio-primary-light: #FCA889;
+  --refugio-primary-dark: #E6804F;
+  --refugio-primary-hover: #E6804F;
+  
+  /* Colores Secundarios */
+  --refugio-secondary: var(--color-secondary);
+  --refugio-secondary-light: #3B5F7A;
+  --refugio-secondary-dark: #1A2933;
+  --refugio-secondary-hover: #1F3342;
+  
+  /* Colores de Acento */
+  --refugio-accent: var(--color-tertiary);
+  --refugio-accent-light: #4FA19D;
+  --refugio-accent-dark: #285F5B;
+  
+  /* Colores Semánticos */
+  --refugio-success: var(--color-tertiary);
+  --refugio-warning: #F39C12;
+  --refugio-error: #E74C3C;
+  --refugio-info: var(--color-secondary);
+  
+  /* Texto */
+  --color-texto: #212529;
+  --color-texto-light: #6C757D;
+  --color-texto-dark: #000000;
+  
+  /* Fondos */
+  --color-fondo: #F8F9FA;
+  --color-blanco: #FFFFFF;
+  --refugio-bg-surface: #FFFFFF;
+  --refugio-bg-hover: rgba(0, 0, 0, 0.05);
+  
+  /* Bordes */
+  --refugio-border: var(--color-light-gray);
+  --refugio-border-light: #E9ECEF;
+  
+  /* Tipografía */
+  --font-main: 'Quicksand', 'Segoe UI', sans-serif;
+  
+  /* Espaciado */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* UI */
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 4px rgba(42, 71, 89, 0.08);
+  --shadow-md: 0 4px 6px rgba(42, 71, 89, 0.1);
+  --shadow-lg: 0 10px 15px rgba(42, 71, 89, 0.15);
+  
+  /* Transiciones */
+  --transition: all 0.3s ease;
+}
+
+/* ========================================
+   Reset y Estilos Globales
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   Contenedores
+   ======================================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.container-center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-lg);
+}
+
+/* ========================================
+   Botones
+   ======================================== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--refugio-primary), var(--refugio-primary-dark));
+  color: var(--color-blanco);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--refugio-primary-hover), var(--refugio-primary-dark));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-download {
+  display: inline-block;
+  background-color: var(--refugio-success);
+  color: var(--color-blanco);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn-download:hover {
+  background-color: var(--refugio-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-logout {
+  background-color: transparent;
+  border: 2px solid var(--color-blanco);
+  color: var(--color-blanco);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-logout:hover {
+  background-color: var(--color-blanco);
+  color: var(--refugio-primary);
+}
+
+/* ========================================
+   Mensajes de Estado
+   ======================================== */
+.loading-msg {
+  text-align: center;
+  margin-top: var(--spacing-md);
+  color: var(--refugio-primary);
+}
+
+.spinner {
+  border: 3px solid rgba(247, 155, 114, 0.2);
+  border-top: 3px solid var(--refugio-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--spacing-sm);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-msg {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: var(--refugio-error);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius);
+  margin-top: var(--spacing-sm);
+  border-left: 4px solid var(--refugio-error);
+}
+
+.success-msg {
+  background-color: rgba(59, 140, 136, 0.1);
+  color: var(--refugio-success);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius);
+  margin-top: var(--spacing-sm);
+  border-left: 4px solid var(--refugio-success);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+  }
+  
+  .container-center {
+    padding: var(--spacing-md);
+  }
+  
+  .btn-primary {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+}
