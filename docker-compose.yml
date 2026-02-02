@@ -10,6 +10,7 @@ services:
       - "8001:8000"
     volumes:
       - ./backend/data:/app/data  # Persistencia de la base de datos
+      - ./frontend:/app/frontend:ro  # Frontend accesible para el backend
     environment:
       - DATABASE_URL=sqlite:///./data/refugio.db
       - BREVO_API_KEY=${BREVO_API_KEY}
@@ -24,24 +25,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-
-  # Nginx (Servidor Web)
-  refugio-nginx:
-    image: nginx:alpine
-    container_name: cuentos_nginx
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./frontend:/usr/share/nginx/html/cuentosparacrecer:ro
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      # Descomentar cuando tengas SSL configurado
-      # - /etc/letsencrypt:/etc/letsencrypt:ro
-    depends_on:
-      - refugio-api
-    networks:
-      - refugio-network
 
 networks:
   refugio-network:
