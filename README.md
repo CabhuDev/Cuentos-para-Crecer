@@ -479,6 +479,35 @@ docker-compose logs refugio-api
 
 ---
 
+## 🚀 Scripts de Despliegue Automatizado
+
+Se han creado scripts PowerShell para facilitar el despliegue:
+
+### `deploy-frontend.ps1`
+Despliega solo cambios de frontend (HTML/CSS/JS).
+```powershell
+.\deploy-frontend.ps1
+```
+✅ No requiere reiniciar Docker
+
+### `deploy-backend.ps1`
+Despliega cambios de backend y reinicia el contenedor.
+```powershell
+.\deploy-backend.ps1
+```
+✅ Incluye health check automático
+
+### `deploy-production.ps1`
+Deploy completo con merge automático develop → main.
+```powershell
+.\deploy-production.ps1           # Deploy normal
+.\deploy-production.ps1 -Rebuild  # Con rebuild de Docker
+.\deploy-production.ps1 -SkipMerge # Solo deploy, sin merge
+```
+✅ Workflow completo automatizado
+
+---
+
 ## 🤝 Soporte
 
 ¿Problemas con el despliegue? Revisa los logs:
