@@ -4,10 +4,10 @@ services:
   # Backend FastAPI
   refugio-api:
     build: ./backend
-    container_name: refugio_fastapi
+    container_name: cuentos_fastapi
     restart: always
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - ./backend/data:/app/data  # Persistencia de la base de datos
     environment:
@@ -28,7 +28,7 @@ services:
   # Nginx (Servidor Web)
   refugio-nginx:
     image: nginx:alpine
-    container_name: refugio_nginx
+    container_name: cuentos_nginx
     restart: always
     ports:
       - "80:80"
@@ -45,4 +45,5 @@ services:
 
 networks:
   refugio-network:
+    name: cuentos_network
     driver: bridge
