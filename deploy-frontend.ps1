@@ -13,7 +13,7 @@ git checkout develop
 
 # 2. Actualizar código en VPS
 Write-Host "☁️  Actualizando VPS..." -ForegroundColor Yellow
-ssh root@31.97.36.248 "cd /var/www/cuentos-para-crecer && git pull origin main"
+ssh root@31.97.36.248 "cd /var/www/cuentos-para-crecer && git reset --hard HEAD && git clean -fd && git pull origin main"
 
 Write-Host "✅ Frontend actualizado en producción" -ForegroundColor Green
 Write-Host "🌐 https://elratonsinverguencilla.es/cuentosparacrecer/" -ForegroundColor Blue
