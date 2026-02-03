@@ -13,7 +13,7 @@ git checkout develop
 
 # 2. Actualizar código y reiniciar backend en VPS
 Write-Host "☁️  Actualizando VPS y reiniciando contenedor..." -ForegroundColor Yellow
-ssh root@31.97.36.248 "cd /var/www/cuentos-para-crecer && git reset --hard HEAD && git clean -fd && git pull origin main && docker-compose up -d --build refugio-api"
+ssh root@31.97.36.248 "cd /var/www/cuentos-para-crecer && git reset --hard HEAD && git clean -fd && git pull origin main && docker-compose down && docker-compose up -d --build refugio-api"
 
 Write-Host "✅ Backend actualizado y reiniciado" -ForegroundColor Green
 Write-Host "🔍 Verificando salud del backend..." -ForegroundColor Yellow
