@@ -15,5 +15,9 @@ git checkout develop
 Write-Host "☁️  Actualizando VPS..." -ForegroundColor Yellow
 ssh root@31.97.36.248 "cd /var/www/cuentos-para-crecer && git reset --hard HEAD && git clean -fd && git pull origin main"
 
-Write-Host "✅ Frontend actualizado en producción" -ForegroundColor Green
+# 3. Sincronizar configuración de Nginx
+Write-Host "⚙️  Actualizando configuración de Nginx..." -ForegroundColor Yellow
+ssh root@31.97.36.248 "cp /var/www/cuentos-para-crecer/nginx/nginx.conf /etc/nginx/sites-available/elratonsinverguencilla.es && nginx -t && systemctl reload nginx"
+
+Write-Host "✅ Frontend y Nginx actualizados en producción" -ForegroundColor Green
 Write-Host "🌐 https://elratonsinverguencilla.es/cuentosparacrecer/" -ForegroundColor Blue
