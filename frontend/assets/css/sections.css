@@ -228,22 +228,22 @@
 }
 
 .lamina-btn-view {
-    background-color: var(--color-primary);
-    color: white;
+    background-color: #F79B72;
+    color: #FFFFFF;
 }
 
 .lamina-btn-view:hover {
-    background-color: var(--color-accent);
+    background-color: #E88859;
     transform: translateY(-0.125rem);
 }
 
 .lamina-btn-download {
-    background-color: var(--color-accent);
-    color: white;
+    background-color: #3B8C88;
+    color: #FFFFFF;
 }
 
 .lamina-btn-download:hover {
-    background-color: var(--color-primary);
+    background-color: #2E6F6C;
     transform: translateY(-0.125rem);
 }
 

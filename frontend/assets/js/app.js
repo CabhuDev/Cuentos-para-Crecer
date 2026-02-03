@@ -42,62 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('⚠️ [REFUGIO] Elemento user-name no encontrado');
         }
     }
-    
-    // Inicializar el canvas del diploma
-    console.log('🎨 [REFUGIO] Inicializando diploma...');
-    inicializarDiploma();
 });
 
 // ========================================
 // 2. GENERADOR DE DIPLOMAS (Canvas API)
 // ========================================
-function inicializarDiploma() {
-    const canvas = document.getElementById('canvas-diploma');
-    if (!canvas) {
-        console.warn('⚠️ [REFUGIO] Canvas de diploma no encontrado en esta página');
-        return;
-    }
-    
-    console.log('✅ [REFUGIO] Canvas encontrado, dibujando diploma base...');
-    const ctx = canvas.getContext('2d');
-    
-    // Dibujar plantilla base vacía
-    ctx.fillStyle = '#F0F8FF';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Borde decorativo
-    ctx.strokeStyle = '#4A90E2';
-    ctx.lineWidth = 20;
-    ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
-    
-    // Título
-    ctx.font = 'bold 50px Poppins';
-    ctx.fillStyle = '#333';
-    ctx.textAlign = 'center';
-    ctx.fillText('🏡 Diploma del Refugio', canvas.width / 2, 100);
-    
-    // Subtítulo
-    ctx.font = '30px Poppins';
-    ctx.fillStyle = '#666';
-    ctx.fillText('Certificado de Amistad', canvas.width / 2, 160);
-    
-    // Texto inferior
-    ctx.font = '20px Poppins';
-    ctx.fillStyle = '#999';
-    ctx.fillText('es ahora parte del Refugio de la Amistad', canvas.width / 2, 380);
-    
-    // Firma
-    ctx.font = 'italic 24px Poppins';
-    ctx.fillStyle = '#4A90E2';
-    ctx.fillText('Cuentos para Crecer', canvas.width / 2, 520);
-    
-    // Decoraciones
-    ctx.font = '60px Arial';
-    ctx.fillText('⭐', 150, 500);
-    ctx.fillText('⭐', canvas.width - 150, 500);
-    
-    console.log('✅ [REFUGIO] Diploma base dibujado correctamente');
-}
 function generarDiploma() {
     console.log('🎨 [REFUGIO] Generando diploma personalizado...');
     const canvas = document.getElementById('canvas-diploma');
@@ -148,7 +97,7 @@ function generarDiploma() {
     ctx.font = 'bold 48px Poppins';
     ctx.fillStyle = '#3B8C88';
     ctx.textAlign = 'center';
-    ctx.fillText('🏆 DIPLOMA OFICIAL 🏆', canvas.width / 2, 120);
+    ctx.fillText('🏆 DIPLOMA DE AYUDANTE 🏆', canvas.width / 2, 120);
     
     // Subtítulo
     ctx.font = '32px Poppins';
