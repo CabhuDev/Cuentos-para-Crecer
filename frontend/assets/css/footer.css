@@ -43,7 +43,7 @@
 /* ========= NEWSLETTER SECTION ========= */
 .footer-newsletter-section {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr minmax(auto, 18.75rem);
     align-items: end;
     gap: 3.75rem;
     margin-bottom: 4.5rem;
@@ -113,12 +113,13 @@
 
 /* Imagen circular con máscara bubble */
 .footer-circle-image {
-    width: clamp(12.5rem, 18.75rem, 20rem);
-    height: clamp(12.5rem, 18.75rem, 20rem);
+    width: clamp(10rem, 15vw, 18.75rem);
+    height: clamp(10rem, 15vw, 18.75rem);
     flex-shrink: 0;
     position: relative;
     margin-top: -8rem;
     grid-column: 2;
+    justify-self: end;
 }
 
 .footer-circle-image img {
@@ -137,37 +138,63 @@
 /* Responsive para móviles */
 @media (max-width: 48em) {
     .footer-newsletter-section {
-        gap: 2rem;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .newsletter-content {
+        min-width: auto;
     }
 
     .footer-circle-image {
-        width: clamp(8rem, 12rem, 14rem);
-        height: clamp(8rem, 12rem, 14rem);
-        margin-top: -6rem;
-    }
-
-    .newsletter-title {
-        font-size: 2.5rem;
-    }
-
-    .newsletter-subtitle {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 30em) {
-    .footer-circle-image {
-        width: clamp(7rem, 10rem, 12rem);
-        height: clamp(7rem, 10rem, 12rem);
-        margin-top: -5rem;
+        width: clamp(6rem, 8rem, 9rem);
+        height: clamp(6rem, 8rem, 9rem);
+        margin-top: -4rem;
     }
 
     .newsletter-title {
         font-size: 2rem;
+        line-height: 1.2;
     }
 
     .newsletter-subtitle {
         font-size: 0.875rem;
+    }
+
+    .footer-content {
+        padding: 1rem 3% 2rem;
+    }
+}
+
+@media (max-width: 30em) {
+    .footer-newsletter-section {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-circle-image {
+        width: clamp(5rem, 6.5rem, 7rem);
+        height: clamp(5rem, 6.5rem, 7rem);
+        margin-top: -3rem;
+    }
+
+    .newsletter-title {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .newsletter-subtitle {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .footer-content {
+        padding: 0.5rem 2% 1.5rem;
+    }
+
+    .footer-wave {
+        height: 5rem;
+        top: -8rem;
     }
 }
 

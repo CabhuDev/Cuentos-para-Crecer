@@ -125,6 +125,8 @@
     scroll-behavior: smooth;
     padding: 0 5% 1.25rem;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    touch-action: pan-x;
 }
 
 /* Ocultar scrollbar pero mantener funcionalidad */
@@ -216,8 +218,10 @@
 
 .lamina-btn {
     flex: 1;
+    min-height: 2.75rem;
     padding: 0.75em 1em;
     border-radius: 0.625rem;
+    touch-action: manipulation;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;

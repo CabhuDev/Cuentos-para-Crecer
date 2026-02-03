@@ -178,6 +178,9 @@
     overflow: hidden;
     cursor: pointer;
     position: relative;
+    padding: 0.5rem 0;
+    margin: -0.5rem 0;
+    touch-action: manipulation;
 }
 
 .audio-progress-bar {
@@ -205,6 +208,7 @@
 .audio-download-full-btn {
     display: block;
     width: calc(100% - 2.5rem);
+    min-height: 2.75rem;
     margin: 1.25rem 1.25rem 0.625rem;
     padding: 0.875em 1.25em;
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
@@ -216,6 +220,7 @@
     font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
 }
 
 .audio-download-full-btn:hover {
