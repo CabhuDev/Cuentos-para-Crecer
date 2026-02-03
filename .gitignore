@@ -25,6 +25,15 @@ backend/.env
 frontend/assets/audio/*.mp3
 frontend/assets/pdf/*.pdf
 frontend/assets/img/*.png
+!frontend/assets/img/audio*.png
+!frontend/assets/img/tarjeta_audio*.png
+!frontend/assets/img/icon_*.png
+!frontend/assets/img/logo.png
+!frontend/assets/img/banner_*.png
+!frontend/assets/img/page-cover.png
+!frontend/assets/img/portada.png
+!frontend/assets/img/placeholder.png
+!frontend/assets/img/engagement.png
 frontend/assets/img/*.jpg
 frontend/assets/img/*.jpeg
 frontend/assets/img/*.gif
