@@ -1,7 +1,0 @@
-<!-- Placeholder para imágenes que no cargan -->
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-  <rect width="300" height="300" fill="#E5E7EB"/>
-  <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="20" fill="#9CA3AF">
-    Imagen próximamente
-  </text>
-</svg>
