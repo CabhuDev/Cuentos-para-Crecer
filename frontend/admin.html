@@ -371,13 +371,20 @@
             errorMsg.style.display = 'none';
 
             try {
-                // Determinar la URL base
+                // Determinar la URL base del API
                 const protocol = window.location.protocol;
                 const hostname = window.location.hostname;
-                const port = hostname === 'localhost' ? ':8000' : '';
-                const baseURL = `${protocol}//${hostname}${port}`;
+                let apiURL;
+                
+                if (hostname === 'localhost') {
+                    // En desarrollo local, la API está en localhost:8000
+                    apiURL = `${protocol}//localhost:8000/contacts`;
+                } else {
+                    // En producción, la API está bajo /api/
+                    apiURL = `${protocol}//${hostname}/api/contacts`;
+                }
 
-                const response = await fetch(`${baseURL}/contacts`);
+                const response = await fetch(apiURL);
                 
                 if (!response.ok) {
                     throw new Error(`Error ${response.status}: No se pudieron cargar los contactos`);
