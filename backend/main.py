@@ -78,6 +78,36 @@ async def health_check():
         "timestamp": datetime.now().isoformat()
     }
 
+@app.get("/contacts")
+async def get_contacts(db: Session = Depends(get_db)):
+    """
+    Obtiene todos los contactos registrados
+    """
+    try:
+        contactos = db.query(Contacto).order_by(Contacto.fecha_registro.desc()).all()
+        
+        return {
+            "success": True,
+            "total": len(contactos),
+            "contacts": [
+                {
+                    "id": c.id,
+                    "email": c.email,
+                    "fecha_registro": c.fecha_registro.isoformat(),
+                    "origen": c.origen,
+                    "sincronizado_brevo": bool(c.sincronizado_brevo),
+                    "ultima_sincronizacion": c.ultima_sincronizacion.isoformat() if c.ultima_sincronizacion else None
+                }
+                for c in contactos
+            ]
+        }
+    except Exception as e:
+        logger.error(f"❌ Error al obtener contactos: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error al obtener contactos: {str(e)}"
+        )
+
 @app.post("/register", response_model=RegistrationResponse)
 async def register_email(registration: EmailRegistration, db: Session = Depends(get_db)):
     """

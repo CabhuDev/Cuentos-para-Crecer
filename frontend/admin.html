@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Contactos | Cuentos para Crecer</title>
+    <meta name="description" content="Panel de administración - Visualización de contactos registrados">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Fuente Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .admin-header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .admin-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .admin-content {
+            padding: 40px 30px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: #f5f7fa;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            color: #667eea;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f5f7fa;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f5f7fa;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #667eea;
+            border-bottom: 2px solid #e0e6ed;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e6ed;
+            color: #333;
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: #f9fafc;
+        }
+
+        .email-cell {
+            font-weight: 500;
+            color: #667eea;
+        }
+
+        .date-cell {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+        }
+
+        .spinner {
+            border: 4px solid #f5f7fa;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .admin-header h1 {
+                font-size: 1.5em;
+            }
+
+            th, td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .admin-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1>📊 Panel de Contactos</h1>
+            <p>Visualización de usuarios registrados en el Refugio de la Amistad</p>
+        </div>
+
+        <!-- Content -->
+        <div class="admin-content">
+            <!-- Error Message -->
+            <div id="error-msg" class="error" style="display:none;"></div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span>Total:</span>
+                        <span class="stat-number" id="total-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>✅ Sincronizados:</span>
+                        <span class="stat-number" id="synced-count">0</span>
+                    </div>
+                </div>
+
+                <div class="search-box">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="🔍 Buscar por email..."
+                        autocomplete="off">
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn-secondary" onclick="location.reload()">🔄 Recargar</button>
+                    <button class="btn-primary" onclick="exportToCSV()">📥 Descargar CSV</button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div id="loading" class="loading" style="display:none;">
+                <div class="spinner"></div>
+                <p>Cargando contactos...</p>
+            </div>
+
+            <div id="content" style="display:none;">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Fecha de Registro</th>
+                                <th>Origen</th>
+                                <th>Estado Brevo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contacts-table">
+                            <!-- Datos se cargarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="empty-state" style="display:none;">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📭</div>
+                    <h2>Sin contactos</h2>
+                    <p>Aún no hay contactos registrados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allContacts = [];
+
+        // Cargar contactos al iniciar
+        async function loadContacts() {
+            const loading = document.getElementById('loading');
+            const content = document.getElementById('content');
+            const emptyState = document.getElementById('empty-state');
+            const errorMsg = document.getElementById('error-msg');
+
+            loading.style.display = 'block';
+            content.style.display = 'none';
+            emptyState.style.display = 'none';
+            errorMsg.style.display = 'none';
+
+            try {
+                // Determinar la URL base
+                const protocol = window.location.protocol;
+                const hostname = window.location.hostname;
+                const port = hostname === 'localhost' ? ':8000' : '';
+                const baseURL = `${protocol}//${hostname}${port}`;
+
+                const response = await fetch(`${baseURL}/contacts`);
+                
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: No se pudieron cargar los contactos`);
+                }
+
+                const data = await response.json();
+                allContacts = data.contacts || [];
+
+                loading.style.display = 'none';
+
+                if (allContacts.length === 0) {
+                    emptyState.style.display = 'block';
+                } else {
+                    content.style.display = 'block';
+                    renderTable(allContacts);
+                    updateStats();
+                }
+            } catch (error) {
+                console.error('❌ Error:', error);
+                loading.style.display = 'none';
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = `❌ Error: ${error.message}`;
+            }
+        }
+
+        // Renderizar tabla
+        function renderTable(contacts) {
+            const tbody = document.getElementById('contacts-table');
+            tbody.innerHTML = '';
+
+            contacts.forEach(contact => {
+                const row = document.createElement('tr');
+                const date = new Date(contact.fecha_registro);
+                const formattedDate = date.toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                const brevoStatus = contact.sincronizado_brevo 
+                    ? '<span class="badge badge-success">✅ Sincronizado</span>'
+                    : '<span class="badge badge-pending">⏳ Pendiente</span>';
+
+                row.innerHTML = `
+                    <td>${contact.id}</td>
+                    <td class="email-cell">${escapeHtml(contact.email)}</td>
+                    <td class="date-cell">${formattedDate}</td>
+                    <td>${contact.origen}</td>
+                    <td>${brevoStatus}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Actualizar estadísticas
+        function updateStats() {
+            const total = allContacts.length;
+            const synced = allContacts.filter(c => c.sincronizado_brevo).length;
+
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('synced-count').textContent = synced;
+        }
+
+        // Búsqueda
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = allContacts.filter(c => 
+                c.email.toLowerCase().includes(query)
+            );
+            renderTable(filtered);
+        });
+
+        // Exportar a CSV
+        function exportToCSV() {
+            if (allContacts.length === 0) {
+                alert('No hay contactos para exportar');
+                return;
+            }
+
+            const headers = ['ID', 'Email', 'Fecha de Registro', 'Origen', 'Sincronizado Brevo'];
+            const rows = allContacts.map(c => [
+                c.id,
+                c.email,
+                c.fecha_registro,
+                c.origen,
+                c.sincronizado_brevo ? 'Sí' : 'No'
+            ]);
+
+            const csv = [
+                headers.join(','),
+                ...rows.map(r => r.map(cell => `"${cell}"`).join(','))
+            ].join('\n');
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `contactos_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Escape HTML
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Cargar al iniciar
+        loadContacts();
+    </script>
+</body>
+</html>
