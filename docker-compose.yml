@@ -7,10 +7,9 @@ services:
     container_name: cuentos_fastapi
     restart: always
     ports:
-      - "8001:8000"
+      - "127.0.0.1:8001:8000"
     volumes:
-      - ./backend/data:/app/data  # Persistencia de la base de datos
-      - ./frontend:/app/frontend:ro  # Frontend accesible para el backend
+      - ./backend/data:/app/data
     environment:
       - DATABASE_URL=sqlite:///./data/refugio.db
       - BREVO_API_KEY=${BREVO_API_KEY}
