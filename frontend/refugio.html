@@ -10,314 +10,576 @@
     <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
     <link rel="apple-touch-icon" href="assets/img/logo.png">
     
-    <!-- Estilos -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/refugio.css">
-    
+    <!-- Estilos modulares -->
+    <link rel="stylesheet" href="assets/css/main.css"> <!-- Keep original main.css -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/cards.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+
     <!-- Fuente Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sevillana&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="refugio-header">
-        <div class="container">
-            <h1>🏡 El Refugio de la Amistad</h1>
-            <p class="user-welcome">¡Hola, <span id="user-name">explorador</span>! 👋</p>
+
+    <header class="bubble-header">
+        <div class="header-content">
+            <div class="header-nav-bar">
+                <div class="logo-container">
+                    <a href="#"><img src="assets/img/logo.png" alt="Logo Cuentos para Crecer"></a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#audios">Audios</a></li>
+                        <li><a href="#descargables">Descargables</a></li>
+                        <li><a href="#laminas">Láminas</a></li>
+                        <li><a href="#diploma-section">Tu Diploma</a></li>
+                        <li><a href="#" onclick="cerrarSesion(); return false;">Salir</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="hero-wrapper">
+                <div class="bubble-image">
+                    <img src="assets/img/banner_1.png" alt="Banner Principal Cuentos para Crecer">
+                </div>
+                
+                <div class="hero-text">
+                    <div class="user-greeting">
+                        <div class="greeting-icon">👋</div>
+                        <div>
+                            <p class="greeting-message">¡Hola, <span id="user-name">explorador</span>!</p>
+                            <h1>Bienvenido al Refugio de la Amistad</h1>
+                        </div>
+                    </div>
+                    <p class="intro-description">
+                        Un lugar mágico lleno de cuentos, audios y actividades para crecer y soñar. 📚✨
+                    </p>
+                    <div class="destination-picker">
+                        <span class="choose-text">Elige un</span>
+                        <a href="#audios" class="custom-cta-button">audio cuento 🚀</a>
+                        <span class="choose-text">para empezar tu viaje</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="refugio-main">
-        <div class="container">
-            
-            <!-- Sección de Audios -->
-            <section class="recursos-section audio-section">
-                <div class="section-header">
-                    <div class="icon-badge">🎧</div>
-                    <h2>Audios de los Cuentos</h2>
-                    <p class="section-description">Escucha las historias narradas con amor y cierra los ojos para imaginar</p>
-                </div>
-                
+    <main>
+
+        <!-- Sección Audios (Top Posts / Featured Grid) -->
+        <section id="audios" class="audio-stories-section">
+            <div class="container">
+                <h2 class="section-title">Audio Cuentos para Soñar</h2>
                 <div class="audio-grid">
-                    <!-- Audio 1 -->
-                    <div class="audio-card" data-audio="1">
-                        <div class="audio-header">
-                            <div class="audio-icon">🎵</div>
-                            <div class="audio-number">01</div>
+                    <!-- Audio Card 1 -->
+                    <article class="audio-card">
+                        <div class="audio-card-icon">
+                            <img src="assets/img/audio01_img.png" alt="El Suspiro de Giro">
                         </div>
-                        <h3>El Suspiro de Giro</h3>
-                        <div class="audio-player">
-                            <audio controls controlsList="nodownload">
-                                <source src="/cuentosparacrecer/assets/audio/45_elsuspirodegiro.mp3" type="audio/mpeg">
-                                Tu navegador no soporta audio HTML5.
+                        <div class="audio-card-category">Cuento Mágico</div>
+                        <h3 class="audio-card-title">El Suspiro de Giro</h3>
+                        <div class="audio-card-image">
+                            <img src="assets/img/tarjeta_audio01.png" alt="El Suspiro de Giro" onerror="this.src='assets/img/audio01_img.png'">
+                        </div>
+                        <div class="audio-controls">
+                            <audio class="audio-player" data-audio-id="1">
+                                <source src="assets/audio/45_elsuspirodegiro.mp3" type="audio/mpeg">
                             </audio>
+                            <button class="audio-play-btn" data-audio-id="1" aria-label="Reproducir audio">
+                                <span class="play-icon">▶</span>
+                                <span class="pause-icon">⏸</span>
+                            </button>
+                            <div class="audio-progress-wrapper">
+                                <div class="audio-progress">
+                                    <div class="audio-progress-bar"></div>
+                                </div>
+                                <div class="audio-time">
+                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="audio-tag">Cuento mágico</div>
-                    </div>
-                    
-                    <!-- Audio 2 -->
-                    <div class="audio-card" data-audio="2">
-                        <div class="audio-header">
-                            <div class="audio-icon">🎵</div>
-                            <div class="audio-number">02</div>
-                        </div>
-                        <h3>El gran abrazo de Berni</h3>
-                        <div class="audio-player">
-                            <audio controls controlsList="nodownload">
-                                <source src="/cuentosparacrecer/assets/audio/9_elgranabrazodeBerni.mp3" type="audio/mpeg">
-                                Tu navegador no soporta audio HTML5.
-                            </audio>
-                        </div>
-                        <div class="audio-tag">Valor: Amistad</div>
-                    </div>
-                    
-                    <!-- Audio 3 -->
-                    <div class="audio-card" data-audio="3">
-                        <div class="audio-header">
-                            <div class="audio-icon">🎵</div>
-                            <div class="audio-number">03</div>
-                        </div>
-                        <h3>El silbido dulce de Vaporino</h3>
-                        <div class="audio-player">
-                            <audio controls controlsList="nodownload">
-                                <source src="/cuentosparacrecer/assets/audio/21_ElsilbidodulcedeVaporino.mp3" type="audio/mpeg">
-                                Tu navegador no soporta audio HTML5.
-                            </audio>
-                        </div>
-                        <div class="audio-tag">Aventura musical</div>
-                    </div>
-                    
-                    <!-- Audio 4 -->
-                    <div class="audio-card" data-audio="4">
-                        <div class="audio-header">
-                            <div class="audio-icon">🎵</div>
-                            <div class="audio-number">04</div>
-                        </div>
-                        <h3>Vola toca la luna</h3>
-                        <div class="audio-player">
-                            <audio controls controlsList="nodownload">
-                                <source src="/cuentosparacrecer/assets/audio/33_Volatocalaluna.mp3" type="audio/mpeg">
-                                Tu navegador no soporta audio HTML5.
-                            </audio>
-                        </div>
-                        <div class="audio-tag">Sueños infinitos</div>
-                    </div>
+                        <a href="assets/audio/45_elsuspirodegiro.mp3" download class="audio-download-full-btn">
+                            📥 Descargar audio cuento
+                        </a>
+                    </article>
 
-                    <!-- Audio 5 -->
-                    <div class="audio-card" data-audio="5">
-                        <div class="audio-header">
-                            <div class="audio-icon">🎵</div>
-                            <div class="audio-number">05</div>
+                    <!-- Audio Card 2 -->
+                    <article class="audio-card">
+                        <div class="audio-card-icon">
+                            <img src="assets/img/audio02_img.png" alt="El gran abrazo de Berni">
                         </div>
-                        <h3>El desfile de los sueños</h3>
-                        <div class="audio-player">
-                            <audio controls controlsList="nodownload">
-                                <source src="/cuentosparacrecer/assets/audio/37_Eldesfiledelossueños.mp3" type="audio/mpeg">
-                                Tu navegador no soporta audio HTML5.
+                        <div class="audio-card-category">Valor: Amistad</div>
+                        <h3 class="audio-card-title">El gran abrazo de Berni</h3>
+                        <div class="audio-card-image">
+                            <img src="assets/img/tarjeta_audio02.png" alt="El gran abrazo de Berni" onerror="this.src='assets/img/audio02_img.png'">
+                        </div>
+                        <div class="audio-controls">
+                            <audio class="audio-player" data-audio-id="2">
+                                <source src="assets/audio/9_elgranabrazodeBerni.mp3" type="audio/mpeg">
                             </audio>
+                            <button class="audio-play-btn" data-audio-id="2" aria-label="Reproducir audio">
+                                <span class="play-icon">▶</span>
+                                <span class="pause-icon">⏸</span>
+                            </button>
+                            <div class="audio-progress-wrapper">
+                                <div class="audio-progress">
+                                    <div class="audio-progress-bar"></div>
+                                </div>
+                                <div class="audio-time">
+                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="audio-tag">Imaginación</div>
+                        <a href="assets/audio/9_elgranabrazodeBerni.mp3" download class="audio-download-full-btn">
+                            📥 Descargar audio cuento
+                        </a>
+                    </article>
+
+                    <!-- Audio Card 3 -->
+                    <article class="audio-card">
+                        <div class="audio-card-icon">
+                            <img src="assets/img/audio03_img.png" alt="El silbido dulce de Vaporino">
+                        </div>
+                        <div class="audio-card-category">La fuerza de la suavidad</div>
+                        <h3 class="audio-card-title">El silbido dulce de Vaporino</h3>
+                        <div class="audio-card-image">
+                            <img src="assets/img/tarjeta_audio03.png" alt="El silbido dulce de Vaporino" onerror="this.src='assets/img/audio03_img.png'">
+                        </div>
+                        <div class="audio-controls">
+                            <audio class="audio-player" data-audio-id="3">
+                                <source src="assets/audio/21_ElsilbidodulcedeVaporino.mp3" type="audio/mpeg">
+                            </audio>
+                            <button class="audio-play-btn" data-audio-id="3" aria-label="Reproducir audio">
+                                <span class="play-icon">▶</span>
+                                <span class="pause-icon">⏸</span>
+                            </button>
+                            <div class="audio-progress-wrapper">
+                                <div class="audio-progress">
+                                    <div class="audio-progress-bar"></div>
+                                </div>
+                                <div class="audio-time">
+                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="assets/audio/21_ElsilbidodulcedeVaporino.mp3" download class="audio-download-full-btn">
+                            📥 Descargar audio cuento
+                        </a>
+                    </article>
+
+                    <!-- Audio Card 4 -->
+                    <article class="audio-card">
+                        <div class="audio-card-icon">
+                            <img src="assets/img/audio04_img.png" alt="Cuento 4">
+                        </div>
+                        <div class="audio-card-category">Empatía y ayuda</div>
+                        <h3 class="audio-card-title">Vola toca la luna</h3>
+                        <div class="audio-card-image">
+                            <img src="assets/img/tarjeta_audio04.png" alt="Cuento 4" onerror="this.src='assets/img/audio04_img.png'">
+                        </div>
+                        <div class="audio-controls">
+                            <audio class="audio-player" data-audio-id="4">
+                                <source src="assets/audio/33_Volatocalaluna.mp3" type="audio/mpeg">
+                            </audio>
+                            <button class="audio-play-btn" data-audio-id="4" aria-label="Reproducir audio">
+                                <span class="play-icon">▶</span>
+                                <span class="pause-icon">⏸</span>
+                            </button>
+                            <div class="audio-progress-wrapper">
+                                <div class="audio-progress">
+                                    <div class="audio-progress-bar"></div>
+                                </div>
+                                <div class="audio-time">
+                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="assets/audio/33_Volatocalaluna.mp3" download class="audio-download-full-btn">
+                            📥 Descargar audio cuento
+                        </a>
+                    </article>
+
+                    <!-- Audio Card 5 -->
+                    <article class="audio-card">
+                        <div class="audio-card-icon">
+                            <img src="assets/img/audio05_img.png" alt="Cuento 5">
+                        </div>
+                        <div class="audio-card-category">Creatividad e imaginación</div>
+                        <h3 class="audio-card-title">El desfile de los sueños</h3>
+                        <div class="audio-card-image">
+                            <img src="assets/img/tarjeta_audio05.png" alt="Cuento 5" onerror="this.src='assets/img/audio05_img.png'">
+                        </div>
+                        <div class="audio-controls">
+                            <audio class="audio-player" data-audio-id="5">
+                                <source src="assets/audio/37_Eldesfiledelossueños.mp3" type="audio/mpeg">
+                            </audio>
+                            <button class="audio-play-btn" data-audio-id="5" aria-label="Reproducir audio">
+                                <span class="play-icon">▶</span>
+                                <span class="pause-icon">⏸</span>
+                            </button>
+                            <div class="audio-progress-wrapper">
+                                <div class="audio-progress">
+                                    <div class="audio-progress-bar"></div>
+                                </div>
+                                <div class="audio-time">
+                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="assets/audio/37_Eldesfiledelossueños.mp3" download class="audio-download-full-btn">
+                            📥 Descargar audio cuento
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Guía PDF (Sustainable) -->
+        <section id="descargables" class="sustainable-section">
+            <div class="container">
+                <div class="sustainable-content">
+                    <div class="sustainable-image">
+                        <img src="assets/img/banner_guiaparapadres.png" alt="Guía para Padres">
+                    </div>
+                    <div class="sustainable-text">
+                        <h3>Guía de Navegación Emocional para Padres</h3>
+                        <p>Dime qué siente tu peque y te diré qué cuento leerle esta noche.</p>
+                        <a href="assets/pdf/2026_Guia-para-padres.pdf" download class="btn-download-featured">
+                            <span class="download-icon">⬇️</span>
+                            <span class="download-text">Descargar Guía Completa</span>
+                        </a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Sección de PDF -->
-            <section class="recursos-section pdf-section">
-                <div class="section-header">
-                    <div class="icon-badge">📚</div>
-                    <h2>Material Descargable</h2>
-                    <p class="section-description">Guía completa para disfrutar y aprender con cada cuento</p>
+        <!-- Sección Láminas (Scroll Horizontal) -->
+        <section id="laminas" class="laminas-scroll-section">
+            <div class="container">
+                <h2 class="section-title">Láminas para Colorear</h2>
+                <div class="laminas-scroll-wrapper">
+                    <div class="laminas-scroll-container">
+                        <!-- Lámina 1 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_01.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">🎨 Cuento</span>
+                                    <h3 class="lamina-title">El Suspiro de Giro</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_01.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_01.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 2 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_02.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">❤️ Cuento</span>
+                                    <h3 class="lamina-title">El abrazo de Berni</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_02.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_02.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 3 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_03.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">🚂 Cuento</span>
+                                    <h3 class="lamina-title">Vaporino silbando</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_03.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_03.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 4 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_04.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">🌙 Cuento</span>
+                                    <h3 class="lamina-title">Vola y la luna</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_04.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_04.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 5 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_05.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">✨ Cuento</span>
+                                    <h3 class="lamina-title">Desfile de sueños</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_05.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_05.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 6 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_06.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">🌈 Cuento</span>
+                                    <h3 class="lamina-title">El arcoíris de Bruno</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_06.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_06.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 7 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_07.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">⚽ Cuento</span>
+                                    <h3 class="lamina-title">La pelota roja de Martín</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_07.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_07.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 8 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_08.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">📄 Cuento</span>
+                                    <h3 class="lamina-title">Martín y el papel mágico</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_08.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_08.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 9 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_09.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">🍰 Cuento</span>
+                                    <h3 class="lamina-title">Mezcli y los pasteles</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_09.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_09.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Lámina 10 -->
+                        <div class="lamina-card">
+                            <div class="lamina-image">
+                                <img src="assets/img/laminas/lamina_10.png" alt="Lámina para colorear">
+                                <div class="lamina-overlay">
+                                    <span class="lamina-location">🚗 Cuento</span>
+                                    <h3 class="lamina-title">Pipo y la autopista de papel</h3>
+                                </div>
+                            </div>
+                            <div class="lamina-actions">
+                                <a href="assets/img/laminas/lamina_10.png" target="_blank" class="lamina-btn lamina-btn-view">
+                                    👁️ Ver
+                                </a>
+                                <a href="assets/img/laminas/lamina_10.png" download class="lamina-btn lamina-btn-download">
+                                    📥 Descargar
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+    <!-- La sección original del diploma se mantiene aquí para la funcionalidad del ancla -->
+    <div id="diploma-section">
+        <section class="recursos-section diploma-section">
+            <div class="section-header">
+                <div class="icon-badge">🏆</div>
+                <h2>Tu Diploma del Refugio</h2>
+                <p class="section-description">¡Certifica que eres un explorador oficial del Refugio de la Amistad!</p>
+            </div>
+            
+            <div class="diploma-creator">
+                <div class="diploma-form">
+                    <div class="form-step">
+                        <label for="input-nombre">
+                            <span class="label-icon">✍️</span>
+                            <span class="label-text">¿Cómo te llamas?</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="input-nombre" 
+                            placeholder="Escribe tu nombre aquí..."
+                            maxlength="30"
+                            autocomplete="off">
+                        <div class="input-hint">Tu nombre aparecerá en el diploma</div>
+                    </div>
+                    
+                    <button onclick="generarDiploma()" class="btn-crear-diploma">
+                        <span class="btn-icon">✨</span>
+                        <span class="btn-text">Crear mi Diploma</span>
+                    </button>
                 </div>
                 
-                <div class="pdf-featured">
-                    <div class="pdf-card-featured">
-                        <div class="pdf-visual">
-                            <div class="pdf-icon-large">📖</div>
-                            <div class="pdf-overlay">
-                                <span class="pdf-badge">PDF Completo</span>
-                            </div>
-                        </div>
-                        <div class="pdf-content">
-                            <h3>Guía Completa del Refugio</h3>
-                            <p class="pdf-description">Incluye todos los cuentos, actividades, reflexiones y material educativo para padres y educadores. Un recurso completo para trabajar valores y emociones.</p>
-                            <div class="pdf-features">
-                                <span class="feature-item">✨ 5 Cuentos completos</span>
-                                <span class="feature-item">🎨 Actividades creativas</span>
-                                <span class="feature-item">💡 Guía para educadores</span>
-                                <span class="feature-item">❤️ Valores y emociones</span>
-                            </div>
-                            <a href="assets/pdf/2026_Guia-para-padres.pdf" download class="btn-download-featured">
-                                <span class="download-icon">⬇️</span>
-                                <span class="download-text">Descargar Guía Completa</span>
-                                <span class="download-size">PDF • 2.5 MB</span>
-                            </a>
-                        </div>
+                <div class="diploma-preview" id="diploma-container" style="display:none;">
+                    <div class="diploma-frame">
+                        <canvas id="canvas-diploma" width="800" height="600"></canvas>
                     </div>
-                </div>
-            </section>
-
-            <!-- Sección de Láminas para Colorear -->
-            <section class="recursos-section laminas-section">
-                <div class="section-header">
-                    <div class="icon-badge">🎨</div>
-                    <h2>Láminas para Colorear</h2>
-                    <p class="section-description">Imprime y da vida a los personajes del refugio con tus colores favoritos</p>
-                </div>
-                
-                <div class="laminas-grid">
-                    <div class="lamina-card" data-lamina="1">
-                        <div class="lamina-preview">
-                            <div class="lamina-placeholder">
-                                <div class="placeholder-icon">🖍️</div>
-                                <span>Lámina 1</span>
-                            </div>
-                            <div class="lamina-overlay">
-                                <button class="btn-preview" onclick="verLamina(1)">👁️ Ver</button>
-                            </div>
-                        </div>
-                        <div class="lamina-info">
-                            <h3>El Suspiro de Giro</h3>
-                            <p class="lamina-description">Colorea a Giro en su aventura</p>
-                            <a href="assets/img/laminas/lamina_01.png" download class="btn-download-lamina">
-                                <span>🖨️</span> Descargar
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="lamina-card" data-lamina="2">
-                        <div class="lamina-preview">
-                            <div class="lamina-placeholder">
-                                <div class="placeholder-icon">🖍️</div>
-                                <span>Lámina 2</span>
-                            </div>
-                            <div class="lamina-overlay">
-                                <button class="btn-preview" onclick="verLamina(2)">👁️ Ver</button>
-                            </div>
-                        </div>
-                        <div class="lamina-info">
-                            <h3>El abrazo de Berni</h3>
-                            <p class="lamina-description">Dibuja el gran abrazo</p>
-                            <a href="assets/img/laminas/lamina_02.png" download class="btn-download-lamina">
-                                <span>🖨️</span> Descargar
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="lamina-card" data-lamina="3">
-                        <div class="lamina-preview">
-                            <div class="lamina-placeholder">
-                                <div class="placeholder-icon">🖍️</div>
-                                <span>Lámina 3</span>
-                            </div>
-                            <div class="lamina-overlay">
-                                <button class="btn-preview" onclick="verLamina(3)">👁️ Ver</button>
-                            </div>
-                        </div>
-                        <div class="lamina-info">
-                            <h3>Vaporino silbando</h3>
-                            <p class="lamina-description">Pinta el dulce silbido</p>
-                            <a href="assets/img/laminas/lamina_03.png" download class="btn-download-lamina">
-                                <span>🖨️</span> Descargar
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="lamina-card" data-lamina="4">
-                        <div class="lamina-preview">
-                            <div class="lamina-placeholder">
-                                <div class="placeholder-icon">🖍️</div>
-                                <span>Lámina 4</span>
-                            </div>
-                            <div class="lamina-overlay">
-                                <button class="btn-preview" onclick="verLamina(4)">👁️ Ver</button>
-                            </div>
-                        </div>
-                        <div class="lamina-info">
-                            <h3>Vola y la luna</h3>
-                            <p class="lamina-description">Colorea el viaje a la luna</p>
-                            <a href="assets/img/laminas/lamina_04.png" download class="btn-download-lamina">
-                                <span>🖨️</span> Descargar
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="lamina-card" data-lamina="5">
-                        <div class="lamina-preview">
-                            <div class="lamina-placeholder">
-                                <div class="placeholder-icon">🖍️</div>
-                                <span>Lámina 5</span>
-                            </div>
-                            <div class="lamina-overlay">
-                                <button class="btn-preview" onclick="verLamina(5)">👁️ Ver</button>
-                            </div>
-                        </div>
-                        <div class="lamina-info">
-                            <h3>Desfile de sueños</h3>
-                            <p class="lamina-description">Imagina y colorea</p>
-                            <a href="assets/img/laminas/lamina_05.png" download class="btn-download-lamina">
-                                <span>🖨️</span> Descargar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Sección de Diploma Personalizado -->
-            <section class="recursos-section diploma-section">
-                <div class="section-header">
-                    <div class="icon-badge">🏆</div>
-                    <h2>Tu Diploma del Refugio</h2>
-                    <p class="section-description">¡Certifica que eres un explorador oficial del Refugio de la Amistad!</p>
-                </div>
-                
-                <div class="diploma-creator">
-                    <div class="diploma-form">
-                        <div class="form-step">
-                            <label for="input-nombre">
-                                <span class="label-icon">✍️</span>
-                                <span class="label-text">¿Cómo te llamas?</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                id="input-nombre" 
-                                placeholder="Escribe tu nombre aquí..."
-                                maxlength="30"
-                                autocomplete="off">
-                            <div class="input-hint">Tu nombre aparecerá en el diploma</div>
-                        </div>
-                        
-                        <button onclick="generarDiploma()" class="btn-crear-diploma">
-                            <span class="btn-icon">✨</span>
-                            <span class="btn-text">Crear mi Diploma</span>
+                    <div class="diploma-actions">
+                        <button onclick="descargarDiploma()" class="btn-diploma-action btn-descargar">
+                            <span>💾</span> Descargar Diploma
+                        </button>
+                        <button onclick="compartirDiploma()" class="btn-diploma-action btn-compartir">
+                            <span>📤</span> Compartir
+                        </button>
+                        <button onclick="nuevoDiploma()" class="btn-diploma-action btn-nuevo">
+                            <span>🔄</span> Crear otro
                         </button>
                     </div>
-                    
-                    <div class="diploma-preview" id="diploma-container" style="display:none;">
-                        <div class="diploma-frame">
-                            <canvas id="canvas-diploma" width="800" height="600"></canvas>
-                        </div>
-                        <div class="diploma-actions">
-                            <button onclick="descargarDiploma()" class="btn-diploma-action btn-descargar">
-                                <span>💾</span> Descargar Diploma
-                            </button>
-                            <button onclick="compartirDiploma()" class="btn-diploma-action btn-compartir">
-                                <span>📤</span> Compartir
-                            </button>
-                            <button onclick="nuevoDiploma()" class="btn-diploma-action btn-nuevo">
-                                <span>🔄</span> Crear otro
-                            </button>
-                        </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="wave-footer">
+        <!-- Curva ondulada superior -->
+        <div class="footer-wave"></div>
+
+        <!-- Contenido del footer -->
+        <div class="footer-content">
+            <div class="footer-container">
+                <!-- Newsletter y foto -->
+                <div class="footer-newsletter-section">
+                    <div class="newsletter-content">
+                        <h2 class="newsletter-title">Cuentos para Crecer</h2>
+                        <p class="newsletter-subtitle">El ratón Sinvergüencilla.
+                        </p>
+                    </div>
+                    <div class="footer-circle-image">
+                        <img src="assets/img/martin y sus amigos.png" alt="Cuentos para Crecer">
                     </div>
                 </div>
-            </section>
 
-        </div>
-    </main>
+                <!-- Columnas de enlaces 
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Recursos</h3>
+                        <ul>
+                            <li><a href="#audios">Audio Cuentos</a></li>
+                            <li><a href="#laminas">Láminas para Colorear</a></li>
+                            <li><a href="#descargables">Guía Completa</a></li>
+                            <li><a href="#diploma-section">Crea tu Diploma</a></li>
+                        </ul>
+                    </div>
 
-    <footer class="refugio-footer">
-        <div class="container">
-            <p>📖 Cuentos para Crecer © 2026 | Hecho con ❤️ para pequeños lectores</p>
-            <button onclick="cerrarSesion()" class="btn-logout">🚪 Salir del Refugio</button>
+                    <div class="footer-column">
+                        <h3>Cuentos</h3>
+                        <ul>
+                            <li><a href="#">El Suspiro de Giro</a></li>
+                            <li><a href="#">El abrazo de Berni</a></li>
+                            <li><a href="#">Vaporino silbando</a></li>
+                            <li><a href="#">Historias Mágicas</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Sobre Nosotros</h3>
+                        <ul>
+                            <li><a href="#">Nuestra Historia</a></li>
+                            <li><a href="#">Trabaja con Nosotros</a></li>
+                            <li><a href="#">Blog Educativo</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Contacto</h3>
+                        <ul>
+                            <li><a href="mailto:info@cuentosparacrecer.com">info@cuentosparacrecer.com</a></li>
+                            <li class="footer-social">
+                                <a href="#" aria-label="Instagram">📷</a>
+                                <a href="#" aria-label="Facebook">👥</a>
+                                <a href="#" aria-label="YouTube">🎥</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            -->
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>Cuentos para Crecer © 2026 | Hecho con ❤️ para pequeños lectores</p>
+            </div>
         </div>
     </footer>
 

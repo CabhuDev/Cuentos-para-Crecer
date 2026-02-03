@@ -1,0 +1,66 @@
+/* ========================================
+   BASE.CSS - Estilos Globales y Variables
+   ======================================== */
+
+:root {
+  /* Paleta de colores principal (de main.css) */
+  --color-primary: #F79B72;
+  --color-secondary: #2A4759;
+  --color-tertiary: #3B8C88;
+  --color-accent: #d1e8e2; /* Color del nuevo diseño del hero */
+  --color-bg-light: #EEEEEE;
+  --color-fondo: #F8F9FA;
+  --color-blanco: #FFFFFF;
+  --color-texto: #212529;
+  --text-muted: #666;
+
+  /* Fondos y superficies */
+  --header-footer-bg: #F2EAE4;
+  --card-background-color: #ffffff;
+  
+  /* Tipografía */
+  --font-main: 'Poppins', 'Segoe UI', sans-serif;
+  --font-handwriting: 'Sevillana', cursive;
+
+  /* UI */
+  --radius: 12px;
+  --shadow-sm: 0 2px 4px rgba(42, 71, 89, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.wavy-divider {
+    line-height: 0;
+    margin-top: -1px;
+}
+
+.wavy-divider svg {
+    display: block;
+    width: 100%;
+    height: 60px;
+}
