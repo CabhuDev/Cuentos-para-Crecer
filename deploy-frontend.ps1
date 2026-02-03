@@ -3,7 +3,16 @@
 
 Write-Host "🚀 Desplegando cambios de FRONTEND..." -ForegroundColor Cyan
 
-# Actualizar código en VPS
+# 1. Merge develop → main
+Write-Host "📦 Haciendo merge develop → main..." -ForegroundColor Yellow
+git checkout main
+git pull origin main
+git merge develop -m "Deploy: Frontend update"
+git push origin main
+git checkout develop
+
+# 2. Actualizar código en VPS
+Write-Host "☁️  Actualizando VPS..." -ForegroundColor Yellow
 ssh root@31.97.36.248 "cd /var/www/cuentos-para-crecer && git pull origin main"
 
 Write-Host "✅ Frontend actualizado en producción" -ForegroundColor Green
