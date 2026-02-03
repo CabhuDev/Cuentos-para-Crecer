@@ -29,13 +29,27 @@
     z-index: 10;
 }
 
-.logo-container img {
-    max-height: 3.125rem;
+.logo-container a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
     transition: transform 0.3s ease;
 }
 
-.logo-container img:hover {
+.logo-container a:hover {
     transform: scale(1.05);
+}
+
+.logo-container img {
+    max-height: 3.125rem;
+}
+
+.logo-text {
+    font-family: var(--font-handwriting);
+    font-size: 1.5rem;
+    color: var(--color-texto);
+    white-space: nowrap;
 }
 
 .main-nav ul {
@@ -254,6 +268,10 @@
     
     .main-nav a {
         font-size: 0.875rem;
+    }
+
+    .logo-text {
+        display: none;
     }
 }
 

@@ -42,12 +42,12 @@
 
 /* ========= NEWSLETTER SECTION ========= */
 .footer-newsletter-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
     gap: 3.75rem;
     margin-bottom: 4.5rem;
-    flex-wrap: wrap;
+    position: relative;
 }
 
 .newsletter-content {
@@ -113,10 +113,12 @@
 
 /* Imagen circular con máscara bubble */
 .footer-circle-image {
-    width: 18.75rem;
-    height: 18.75rem;
+    width: clamp(12.5rem, 18.75rem, 20rem);
+    height: clamp(12.5rem, 18.75rem, 20rem);
     flex-shrink: 0;
     position: relative;
+    margin-top: -8rem;
+    grid-column: 2;
 }
 
 .footer-circle-image img {
@@ -130,6 +132,43 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive para móviles */
+@media (max-width: 48em) {
+    .footer-newsletter-section {
+        gap: 2rem;
+    }
+
+    .footer-circle-image {
+        width: clamp(8rem, 12rem, 14rem);
+        height: clamp(8rem, 12rem, 14rem);
+        margin-top: -6rem;
+    }
+
+    .newsletter-title {
+        font-size: 2.5rem;
+    }
+
+    .newsletter-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 30em) {
+    .footer-circle-image {
+        width: clamp(7rem, 10rem, 12rem);
+        height: clamp(7rem, 10rem, 12rem);
+        margin-top: -5rem;
+    }
+
+    .newsletter-title {
+        font-size: 2rem;
+    }
+
+    .newsletter-subtitle {
+        font-size: 0.875rem;
+    }
 }
 
 /* ========= ENLACES DEL FOOTER ========= */
