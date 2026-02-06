@@ -392,3 +392,171 @@
 #diploma-section .btn-diploma-action:hover {
     background-color: #ccc;
 }
+/* ========================================
+   AMAZON CTA SECTION
+   ======================================== */
+.amazon-cta-section {
+    background: linear-gradient(135deg, #FFF9F5 0%, #F0F9F8 50%, #FFF9F5 100%);
+    padding: 4rem 5%;
+    margin: 2rem 0;
+}
+
+.amazon-cta-container {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.amazon-cta-content {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.amazon-cta-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: bookFloat 3s ease-in-out infinite;
+}
+
+@keyframes bookFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.amazon-cta-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.amazon-cta-description {
+    font-size: 1.125rem;
+    color: #6B7280;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.amazon-cta-description strong {
+    color: var(--color-tertiary);
+    font-weight: 600;
+}
+
+.amazon-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #FF9900 0%, #FF7700 100%);
+    color: white;
+    padding: 1.125rem 2.25rem;
+    border-radius: 3.125rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(255, 153, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.amazon-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 153, 0, 0.4);
+    background: linear-gradient(135deg, #FF7700 0%, #FF5500 100%);
+}
+
+.amazon-icon {
+    font-size: 1.5rem;
+}
+
+.amazon-button-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.amazon-button-main {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.amazon-button-sub {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.amazon-arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.amazon-cta-button:hover .amazon-arrow {
+    transform: translateX(5px);
+}
+
+.amazon-cta-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #FFF9F5, #F0F9F8);
+    border: 1px solid #E5E7EB;
+    border-radius: 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4B5563;
+}
+
+/* Responsive para Amazon CTA */
+@media (max-width: 48em) {
+    .amazon-cta-section {
+        padding: 3rem 3%;
+    }
+    
+    .amazon-cta-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .amazon-cta-button {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 1.75rem;
+    }
+    
+    .amazon-button-text {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .feature-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+@media (max-width: 30em) {
+    .amazon-cta-icon {
+        font-size: 2.5rem;
+    }
+    
+    .amazon-cta-features {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .feature-badge {
+        width: 100%;
+        justify-content: center;
+    }
+}
