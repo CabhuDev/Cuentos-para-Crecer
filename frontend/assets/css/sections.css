@@ -299,7 +299,7 @@
 #diploma-section {
     background-color: var(--card-background-color);
     margin-top: 0;
-    padding-bottom: 5rem;
+    padding-bottom: 0.2rem;
 }
 
 #diploma-section .section-header {
@@ -397,7 +397,7 @@
    ======================================== */
 .amazon-cta-section {
     background: linear-gradient(135deg, #FFF9F5 0%, #F0F9F8 50%, #FFF9F5 100%);
-    padding: 4rem 5%;
+    padding: 1.5rem 5% 4rem;
     margin: 2rem 0;
 }
 
