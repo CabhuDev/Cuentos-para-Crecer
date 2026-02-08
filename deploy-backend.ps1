@@ -15,12 +15,6 @@ git checkout develop
 Write-Host "☁️  Actualizando VPS y reiniciando contenedor..." -ForegroundColor Yellow
 ssh root@31.97.36.248 "cd /var/www/cuentos-para-crecer && git reset --hard HEAD && git clean -fd && git pull origin main && docker-compose down && docker-compose up -d --build refugio-api"
 
-# 3. Sincronizar configuración de Nginx (por si hay cambios en API)
-Write-Host "⚙️  Verificando configuración de Nginx..." -ForegroundColor Yellow
-ssh root@31.97.36.248 "cp /var/www/cuentos-para-crecer/nginx/nginx.conf /etc/nginx/sites-available/elratonsinverguencilla.es && nginx -t && systemctl reload nginx"
-
-Write-Host "✅ Backend y Nginx actualizados y reiniciados" -ForegroundColor Green
-Write-Host "🔍 Verificando salud del backend..." -ForegroundColor Yellow
 
 # Esperar 5 segundos para que arranque completamente
 Start-Sleep -Seconds 5
