@@ -45,6 +45,8 @@ app.add_middleware(
 BREVO_API_KEY = os.getenv("BREVO_API_KEY", "")
 BREVO_LIST_ID_STR = os.getenv("BREVO_LIST_ID", "2")
 BREVO_LIST_ID = int(BREVO_LIST_ID_STR) if BREVO_LIST_ID_STR and BREVO_LIST_ID_STR.strip() else 2
+BREVO_TEMPLATE_ID_STR = os.getenv("BREVO_TEMPLATE_ID", "1")
+BREVO_TEMPLATE_ID = int(BREVO_TEMPLATE_ID_STR) if BREVO_TEMPLATE_ID_STR and BREVO_TEMPLATE_ID_STR.strip() else 1
 
 # Modelos Pydantic
 class EmailRegistration(BaseModel):
@@ -140,14 +142,18 @@ async def register_email(registration: EmailRegistration, db: Session = Depends(
         # 2. DESPUÉS: Intentar sincronizar con Brevo (OPCIONAL)
         if BREVO_API_KEY:
             try:
+                # Añadir a lista de contactos
                 await send_to_brevo(email)
+                
+                # Enviar email de bienvenida con plantilla
+                await send_welcome_email(email)
                 
                 # Marcar como sincronizado
                 contacto.sincronizado_brevo = 1
                 contacto.ultima_sincronizacion = datetime.utcnow()
                 db.commit()
                 
-                logger.info(f"✅ Email {email} sincronizado con Brevo")
+                logger.info(f"✅ Email {email} sincronizado con Brevo y email de bienvenida enviado")
             except Exception as brevo_error:
                 logger.warning(f"⚠️ Error al sincronizar con Brevo (no crítico): {brevo_error}")
                 # No lanzamos error, continúa normal
@@ -173,7 +179,7 @@ async def register_email(registration: EmailRegistration, db: Session = Depends(
 
 async def send_to_brevo(email: str):
     """
-    Envía el email a Brevo (SendinBlue) usando su API
+    Envía el email a Brevo (SendinBlue) usando su API para añadirlo a la lista de contactos
     """
     if not BREVO_API_KEY:
         raise ValueError("BREVO_API_KEY no está configurada")
@@ -200,12 +206,53 @@ async def send_to_brevo(email: str):
         response = await client.post(url, json=payload, headers=headers, timeout=10.0)
         
         if response.status_code not in [200, 201, 204]:
-            logger.error(f"Error de Brevo: {response.status_code} - {response.text}")
+            logger.error(f"Error de Brevo (contactos): {response.status_code} - {response.text}")
             raise HTTPException(
                 status_code=500,
                 detail=f"Error al comunicar con Brevo: {response.status_code}"
             )
         
+        return response.json()
+
+async def send_welcome_email(email: str):
+    """
+    Envía el email de bienvenida usando la plantilla configurada en Brevo
+    """
+    if not BREVO_API_KEY:
+        raise ValueError("BREVO_API_KEY no está configurada")
+    
+    url = "https://api.brevo.com/v3/smtp/email"
+    
+    headers = {
+        "api-key": BREVO_API_KEY,
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+    
+    payload = {
+        "templateId": BREVO_TEMPLATE_ID,
+        "to": [
+            {
+                "email": email
+            }
+        ],
+        "params": {
+            "EMAIL": email,
+            "FECHA": datetime.now().strftime("%d/%m/%Y")
+        }
+    }
+    
+    async with httpx.AsyncClient() as client:
+        response = await client.post(url, json=payload, headers=headers, timeout=10.0)
+        
+        if response.status_code not in [200, 201]:
+            logger.error(f"Error de Brevo (email): {response.status_code} - {response.text}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Error al enviar email de bienvenida: {response.status_code}"
+            )
+        
+        logger.info(f"📧 Email de bienvenida enviado a {email}")
         return response.json()
 
 # ========================================
